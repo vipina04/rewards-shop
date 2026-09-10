@@ -11,19 +11,19 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'pip install -r requirements.txt'
+                bat 'python -m pip install -r requirements.txt'
             }
         }
 
         stage('Run Tests') {
             steps {
-                sh 'PYTHONPATH=. pytest'
+                bat 'set PYTHONPATH=.&& pytest'
             }
         }
 
         stage('Docker Build') {
             steps {
-                sh 'docker build -t rewards-shop:ci .'
+                bat 'docker build -t rewards-shop:ci .'
             }
         }
     }
