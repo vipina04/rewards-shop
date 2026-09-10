@@ -39,5 +39,10 @@ pipeline {
         bat 'docker run -d --name rewards-shop-ci -p 5001:5000 rewards-shop:ci'
     }
          }
+      stage('Ansible Deploy') {
+    steps {
+        bat 'docker exec ansible-controller ansible-playbook /ansible/rewards-shop/site.yml'
+    }
+  }
     }
 }
