@@ -9,15 +9,22 @@ pipeline {
             }
         }
 
+        stage('Create Python Environment') {
+            steps {
+                bat 'python -m venv .venv'
+            }
+        }
+
         stage('Install Dependencies') {
             steps {
-                bat 'python -m pip install -r requirements.txt'
+                bat '.venv\\Scripts\\python.exe -m pip install --upgrade pip'
+                bat '.venv\\Scripts\\python.exe -m pip install -r requirements.txt'
             }
         }
 
         stage('Run Tests') {
             steps {
-                bat 'set PYTHONPATH=.&& pytest'
+                bat 'set PYTHONPATH=.&& .venv\\Scripts\\python.exe -m pytest'
             }
         }
 
