@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login - Rewards Shop</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+
+            <a href="/" class="logo">
+                🎁 Rewards Shop
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+            </ul>
+
+        </div>
+    </nav>
+
+    <main class="hero">
+
+        <h1>Welcome 👋</h1>
+
+        <p>Enter your details to continue.</p>
+
+        <form method="POST" action="{{ url_for('main.login') }}">
+
+            <div>
+                <label for="name">Name</label>
+
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                >
+            </div>
+
+            <br>
+
+            <div>
+                <label for="dob">Date of Birth</label>
+
+                <input
+                    type="date"
+                    id="dob"
+                    name="dob"
+                    required
+                >
+            </div>
+
+            <br>
+
+            <button type="submit" class="btn">
+                Login / Register
+            </button>
+
+        </form>
+
+    </main>
+
+</body>
+
+</html>

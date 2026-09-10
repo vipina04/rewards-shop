@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Spin History - Rewards Shop</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+
+            <a href="/" class="logo">
+                🎁 Rewards Shop
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/dashboard">Dashboard</a></li>
+                <li><a href="/history">History</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+
+        </div>
+    </nav>
+
+    <main class="hero">
+
+        <h1>📜 Spin History</h1>
+
+        {% if spins %}
+
+            {% for spin in spins %}
+
+                <div>
+                    <h2>🎯 Reward #{{ spin.number }}</h2>
+
+                    <p>
+                        "{{ spin.quote }}"
+                    </p>
+
+                    <small>
+                        {{ spin.spun_at }}
+                    </small>
+                </div>
+
+                <br>
+
+            {% endfor %}
+
+        {% else %}
+
+            <p>You haven't made any spins yet.</p>
+
+        {% endif %}
+
+        <br>
+
+        <a href="/dashboard" class="btn">
+            ← Dashboard
+        </a>
+
+    </main>
+
+</body>
+
+</html>

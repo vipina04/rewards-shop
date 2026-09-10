@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard - Rewards Shop</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+
+            <a href="/" class="logo">
+                🎁 Rewards Shop
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/dashboard">Dashboard</a></li>
+                <li><a href="/history">History</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+
+        </div>
+    </nav>
+
+    <main class="hero">
+
+        <h1>Welcome, {{ user.name }}! 👋</h1>
+
+        <p>Your Rewards Dashboard</p>
+
+        <h2>🎯 Daily Spins</h2>
+
+        <p>
+            You have used
+            <strong>{{ spins_used }}</strong>
+            out of 3 spins today.
+        </p>
+
+        <p>
+            Spins remaining:
+            <strong>{{ spins_remaining }}</strong>
+        </p>
+
+        <br>
+
+        {% if spins_remaining > 0 %}
+
+        <form method="POST" action="{{ url_for('main.spin') }}">
+            <button type="submit" class="btn">
+                🎰 Spin Now
+            </button>
+        </form>
+
+        {% else %}
+
+        <p>
+            ⏰ You have used all your spins for today.
+        </p>
+
+        {% endif %}
+
+        <br>
+
+        <a href="/history" class="btn">
+            📜 View Spin History
+        </a>
+
+    </main>
+
+</body>
+
+</html>

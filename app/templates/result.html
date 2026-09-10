@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Reward - Rewards Shop</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+
+            <a href="/" class="logo">
+                🎁 Rewards Shop
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/dashboard">Dashboard</a></li>
+                <li><a href="/history">History</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+
+        </div>
+    </nav>
+
+    <main class="hero">
+
+        {% if success %}
+
+            <h1>🎉 Your Reward!</h1>
+
+            <h2>Reward Number: {{ number }}</h2>
+
+            <p>
+                "{{ quote }}"
+            </p>
+
+            <p>
+                Spins used today: {{ spins_used }}/3
+            </p>
+
+            <p>
+                Spins remaining: {{ spins_remaining }}
+            </p>
+
+        {% else %}
+
+            <h1>⏰ Daily Limit Reached</h1>
+
+            <p>{{ message }}</p>
+
+        {% endif %}
+
+        <br>
+
+        <a href="/dashboard" class="btn">
+            ← Back to Dashboard
+        </a>
+
+        <a href="/history" class="btn">
+            📜 View History
+        </a>
+
+    </main>
+
+</body>
+
+</html>
